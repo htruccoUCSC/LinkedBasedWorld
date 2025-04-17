@@ -1,0 +1,179 @@
+{
+    "Title": "Disneyland",
+    "Credits": "Created by Adam Smith (amsmith@ucsc.edu) & Sonny Trucco.",
+    "InitialLocation": "MainStreet",
+    "Locations": {
+        "MainStreet": {
+            "Body": "Main Street U.S.A. : Stores everywhere",
+            "Choices": [
+                {
+                    "Text": "Go to Adventureland",
+                    "Target": "Adventureland"
+                },
+                {
+                    "Text": "Go to Frontierland",
+                    "Target": "Frontierland"
+                },
+                {
+                    "Text": "Go to Fantasyland",
+                    "Target": "Fantasyland"
+                },
+                {
+                    "Text": "Go to Tomorrowland",
+                    "Target": "Tomorrowland"
+                },
+                {
+                    "Text": "Go Home",
+                    "Target": "Home"
+                }
+            ]
+        },
+        "Adventureland": {
+            "Body": "Adventureland, here you can ride Indiana Jones & Jungle Cruise",
+            "Choices": [
+                {
+                    "Text": "Go to Frontierland",
+                    "Target": "Frontierland"
+                },
+                {
+                    "Text": "Go to New Orleans Square",
+                    "Target": "NOLA"
+                },
+                {
+                    "Text": "Go to Main Street",
+                    "Target": "MainStreet"
+                }
+            ]
+        },
+        "Frontierland": {
+            "Body": "Frontierland, here you can visit Tom Sawyer Island & ride Big Thunder Mountain Railroad",
+            "Choices": [
+                {
+                    "Text": "Go to Adventureland",
+                    "Target": "Adventureland"
+                },
+                {
+                    "Text": "Go to New Orleans Square",
+                    "Target": "NOLA"
+                },
+                {
+                    "Text": "Go to Fantasyland",
+                    "Target": "Fantasyland"
+                },
+                {
+                    "Text": "Go to Star Wars: Galaxy's Edge",
+                    "Target": "SWGE"
+                },
+                {
+                    "Text": "Go to Critter Country",
+                    "Target": "CritterCountry"
+                },
+                {
+                    "Text": "Go to Main Street",
+                    "Target": "MainStreet"
+                }
+            ]
+        },
+        "NOLA": {
+            "Body": "New Orleans Square, here you can ride Pirates of the Caribbean & Haunted Mansion",
+            "Choices": [
+                {
+                    "Text": "Go to Adventureland",
+                    "Target": "Adventureland"
+                },
+                {
+                    "Text": "Go to Critter Country",
+                    "Target": "CritterCountry"
+                },
+                {
+                    "Text": "Go to Frontierland",
+                    "Target": "Frontierland"
+                }
+            ]
+        },
+        "CritterCountry": {
+            "Body": "Critter Country, here you can ride Tiana's Bayou Adventure & The Many Adventures of Winnie the Pooh",
+            "Choices": [
+                {
+                    "Text": "Go to New Orleans Square",
+                    "Target": "NOLA"
+                },
+                {
+                    "Text": "Go to Frontierland",
+                    "Target": "Frontierland"
+                },
+                {
+                    "Text": "Go to Star Wars: Galaxy's Edge",
+                    "Target": "SWGE"
+                }
+            ]
+        },
+        "SWGE" : {
+            "Body": "Star Wars: Galaxy's Edge, here you can ride Star Wars: Rise of the Resistance & Millennium Falcon: Smugglers Run",
+            "Choices": [
+                {
+                    "Text": "Go to Critter Country",
+                    "Target": "CritterCountry"
+                },
+                {
+                    "Text": "Go to Frontierland",
+                    "Target": "Frontierland"
+                },
+                {
+                    "Text": "Go to Fantasyland",
+                    "Target": "Fantasyland"
+                }
+            ]
+        },
+        "Fantasyland" : {
+            "Body": "Fantasyland, here you can see the Cinderella Castle & ride Peter Pan's Flight",
+            "Choices": [
+                {
+                    "Text": "Go to Frontierland",
+                    "Target": "Frontierland"
+                },
+                {
+                    "Text": "Go to Star Wars: Galaxy's Edge",
+                    "Target": "SWGE"
+                },
+                {
+                    "Text": "Go to Mickey's Toontown",
+                    "Target": "MickeysTT"
+                },
+                {
+                    "Text": "Go to Tomorrowland",
+                    "Target": "Tomorrowland"
+                },
+                {
+                    "Text": "Go to Main Street",
+                    "Target": "MainStreet"
+                }
+            ]
+        },
+        "MickeysTT" : {
+            "Body": "Mickey's Toontown, here you can ride Mickey and Minnie's Runaway Railway",
+            "Choices": [
+                {
+                    "Text": "Go to Fantasyland",
+                    "Target": "Fantasyland"
+                }
+            ]
+        },
+        "Tomorrowland": {
+            "Body": "Tomorrowland, here you ride Space Mountain & Autopia",
+            "Choices": [
+                {
+                    "Text": "Go to Fantasyland",
+                    "Target": "MickeysTT"
+                },
+                {
+                    "Text": "Go to Main Street",
+                    "Target": "MainStreet"
+                }
+            ]
+        },
+        "Home": {
+            "Body": "Home sweet home"
+        }
+    }
+}
