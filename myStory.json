@@ -2,6 +2,7 @@
     "Title": "Disneyland",
     "Credits": "Created by Adam Smith (amsmith@ucsc.edu) & Sonny Trucco.",
     "InitialLocation": "MainStreet",
+    "InitialTime" : 540,
     "Locations": {
         "MainStreet": {
             "Body": "Main Street U.S.A. : Stores everywhere",
@@ -30,6 +31,16 @@
         },
         "Adventureland": {
             "Body": "Adventureland, here you can ride Indiana Jones & Jungle Cruise",
+            "Rides": [
+                {
+                    "Text": "Ride Indiana Jones",
+                    "Time": 75
+                }, 
+                {
+                    "Text": "Ride Jungle Cruise",
+                    "Time": 45
+                }
+            ],
             "Choices": [
                 {
                     "Text": "Go to Frontierland",
@@ -47,6 +58,16 @@
         },
         "Frontierland": {
             "Body": "Frontierland, here you can visit Tom Sawyer Island & ride Big Thunder Mountain Railroad",
+            "Rides": [
+                {
+                    "Text": "Visit Tom Sawyer Island",
+                    "Time": 90
+                }, 
+                {
+                    "Text": "Ride Big Thunder Mountain Railroad",
+                    "Time": 70
+                }
+            ],
             "Choices": [
                 {
                     "Text": "Go to Adventureland",
@@ -76,6 +97,16 @@
         },
         "NOLA": {
             "Body": "New Orleans Square, here you can ride Pirates of the Caribbean & Haunted Mansion",
+            "Rides": [
+                {
+                    "Text": "Ride Pirates of the Caribbean",
+                    "Time": 60
+                }, 
+                {
+                    "Text": "Ride Haunted Mansion",
+                    "Time": 45
+                }
+            ],
             "Choices": [
                 {
                     "Text": "Go to Adventureland",
@@ -93,6 +124,16 @@
         },
         "CritterCountry": {
             "Body": "Critter Country, here you can ride Tiana's Bayou Adventure & The Many Adventures of Winnie the Pooh",
+            "Rides": [
+                {
+                    "Text": "Ride Tiana's Bayou Adventure",
+                    "Time": 90
+                }, 
+                {
+                    "Text": "Ride The Many Adventures of Winnie the Pooh",
+                    "Time": 30
+                }
+            ],
             "Choices": [
                 {
                     "Text": "Go to New Orleans Square",
@@ -110,6 +151,16 @@
         },
         "SWGE" : {
             "Body": "Star Wars: Galaxy's Edge, here you can ride Star Wars: Rise of the Resistance & Millennium Falcon: Smugglers Run",
+            "Rides": [
+                {
+                    "Text": "Ride Star Wars: Rise of the Resistance",
+                    "Time": 240
+                }, 
+                {
+                    "Text": "Ride Millenium Falcon: Smugglers Run",
+                    "Time": 30
+                }
+            ],
             "Choices": [
                 {
                     "Text": "Go to Critter Country",
@@ -126,7 +177,17 @@
             ]
         },
         "Fantasyland" : {
-            "Body": "Fantasyland, here you can see the Cinderella Castle & ride Peter Pan's Flight",
+            "Body": "Fantasyland, here you can ride the Matterhorn Bobsleds & ride Peter Pan's Flight",
+            "Rides": [
+                {
+                    "Text": "Ride Matterhorn Bobsleds",
+                    "Time": 90
+                }, 
+                {
+                    "Text": "Ride Peter Pan's Flight",
+                    "Time": 30
+                }
+            ],
             "Choices": [
                 {
                     "Text": "Go to Frontierland",
@@ -152,6 +213,12 @@
         },
         "MickeysTT" : {
             "Body": "Mickey's Toontown, here you can ride Mickey and Minnie's Runaway Railway",
+            "Rides": [
+                {
+                    "Text": "Mickey and Minnie's Runaway Railway",
+                    "Time": 45
+                }
+            ],
             "Choices": [
                 {
                     "Text": "Go to Fantasyland",
@@ -160,7 +227,17 @@
             ]
         },
         "Tomorrowland": {
-            "Body": "Tomorrowland, here you ride Space Mountain & Autopia",
+            "Body": "Tomorrowland, here you ride Space Mountain & Star Tours - The Adventures Continue",
+            "Rides": [
+                {
+                    "Text": "Space Mountain",
+                    "Time": 120
+                }, 
+                {
+                    "Text": "Star Tours - The Adventures Continue",
+                    "Time": 120
+                }
+            ],
             "Choices": [
                 {
                     "Text": "Go to Fantasyland",
