@@ -3,6 +3,11 @@
     "Credits": "Created by Adam Smith (amsmith@ucsc.edu) & Sonny Trucco.",
     "InitialLocation": "MainStreet",
     "InitialTime" : 540,
+    "ClosingTime" : 1260,
+    "ExitPath" : {
+        "Text": "Head to Exit",
+        "Target": "Exit"
+    },
     "Locations": {
         "MainStreet": {
             "Body": "Main Street U.S.A. : Stores everywhere",
@@ -27,6 +32,14 @@
                     "Text": "Go Home",
                     "Target": "Home"
                 }
+            ],
+            "Items": [
+                {
+                    "Name": "Park Hopper Pass",
+                    "Type": "HallPass",
+                    "Description": "Allows Access to California Adventure",
+                    "Visible" : false
+                }
             ]
         },
         "Adventureland": {
@@ -34,11 +47,13 @@
             "Rides": [
                 {
                     "Text": "Ride Indiana Jones",
-                    "Time": 75
+                    "Time": 75,
+                    "Score": 4500
                 }, 
                 {
                     "Text": "Ride Jungle Cruise",
-                    "Time": 45
+                    "Time": 45,
+                    "Score": 2700
                 }
             ],
             "Choices": [
@@ -61,11 +76,13 @@
             "Rides": [
                 {
                     "Text": "Visit Tom Sawyer Island",
-                    "Time": 90
+                    "Time": 90,
+                    "Score": 5400
                 }, 
                 {
                     "Text": "Ride Big Thunder Mountain Railroad",
-                    "Time": 70
+                    "Time": 75,
+                    "Score": 4500
                 }
             ],
             "Choices": [
@@ -100,11 +117,13 @@
             "Rides": [
                 {
                     "Text": "Ride Pirates of the Caribbean",
-                    "Time": 60
+                    "Time": 60,
+                    "Score": 3600
                 }, 
                 {
                     "Text": "Ride Haunted Mansion",
-                    "Time": 45
+                    "Time": 45,
+                    "Score": 2700
                 }
             ],
             "Choices": [
@@ -127,11 +146,13 @@
             "Rides": [
                 {
                     "Text": "Ride Tiana's Bayou Adventure",
-                    "Time": 90
+                    "Time": 90,
+                    "Score": 5400
                 }, 
                 {
                     "Text": "Ride The Many Adventures of Winnie the Pooh",
-                    "Time": 30
+                    "Time": 30,
+                    "Score": 1800
                 }
             ],
             "Choices": [
@@ -147,6 +168,14 @@
                     "Text": "Go to Star Wars: Galaxy's Edge",
                     "Target": "SWGE"
                 }
+            ],
+            "Items": [
+                {
+                    "Name": "Staff Badge",
+                    "Type": "HallPass",
+                    "Description": "Allows access to shortcuts",
+                    "Visible" : true
+                }
             ]
         },
         "SWGE" : {
@@ -154,11 +183,13 @@
             "Rides": [
                 {
                     "Text": "Ride Star Wars: Rise of the Resistance",
-                    "Time": 240
+                    "Time": 240,
+                    "Score": 14400
                 }, 
                 {
                     "Text": "Ride Millenium Falcon: Smugglers Run",
-                    "Time": 30
+                    "Time": 30,
+                    "Score": 1800
                 }
             ],
             "Choices": [
@@ -174,6 +205,18 @@
                     "Text": "Go to Fantasyland",
                     "Target": "Fantasyland"
                 }
+            ], 
+            "HiddenChoices" : [
+                {
+                    "Text": "Go to Tomorrowland",
+                    "Target": "Tomorrowland",
+                    "Hidden": true
+                },
+                {
+                    "Text": "Go to Mickey's Toontown",
+                    "Target": "MickeysTT",
+                    "Hidden": true
+                }
             ]
         },
         "Fantasyland" : {
@@ -181,11 +224,13 @@
             "Rides": [
                 {
                     "Text": "Ride Matterhorn Bobsleds",
-                    "Time": 90
+                    "Time": 90,
+                    "Score": 5400
                 }, 
                 {
                     "Text": "Ride Peter Pan's Flight",
-                    "Time": 30
+                    "Time": 30,
+                    "Score": 1800
                 }
             ],
             "Choices": [
@@ -209,14 +254,23 @@
                     "Text": "Go to Main Street",
                     "Target": "MainStreet"
                 }
+            ],
+            "Items": [
+                {
+                    "Name": "Club 33 Pass",
+                    "Type": "Toggle",
+                    "Description": "Allows you to purchase alchohol, causing poor navigation",
+                    "Visible" : true
+                }
             ]
         },
         "MickeysTT" : {
             "Body": "Mickey's Toontown, here you can ride Mickey and Minnie's Runaway Railway",
             "Rides": [
                 {
-                    "Text": "Mickey and Minnie's Runaway Railway",
-                    "Time": 45
+                    "Text": "Ride Mickey and Minnie's Runaway Railway",
+                    "Time": 45,
+                    "Score": 2700
                 }
             ],
             "Choices": [
@@ -224,33 +278,79 @@
                     "Text": "Go to Fantasyland",
                     "Target": "Fantasyland"
                 }
+            ], 
+            "HiddenChoices" : [
+                {
+                    "Text": "Go to Star Wars: Galaxy's Edge",
+                    "Target": "SWGE",
+                    "Hidden": true
+                }, 
+                {
+                    "Text": "Go to Tomorrowland",
+                    "Target": "Tomorrowland",
+                    "Hidden": true
+                }
+            ],
+            "Items": [
+                {
+                    "Name": "Churro and Coffee",
+                    "Type": "Consumable",
+                    "Description": "Eneregizes you enough to stay until the park closes at 12:00am",
+                    "Visible" : true
+                }
             ]
         },
         "Tomorrowland": {
             "Body": "Tomorrowland, here you ride Space Mountain & Star Tours - The Adventures Continue",
             "Rides": [
                 {
-                    "Text": "Space Mountain",
-                    "Time": 120
+                    "Text": "Ride Space Mountain",
+                    "Time": 120,
+                    "Score": 7200
                 }, 
                 {
-                    "Text": "Star Tours - The Adventures Continue",
-                    "Time": 120
+                    "Text": "Ride Star Tours - The Adventures Continue",
+                    "Time": 120,
+                    "Score": 7200
                 }
             ],
             "Choices": [
                 {
                     "Text": "Go to Fantasyland",
-                    "Target": "MickeysTT"
+                    "Target": "Fantasyland"
                 },
                 {
                     "Text": "Go to Main Street",
                     "Target": "MainStreet"
                 }
+            ], 
+            "HiddenChoices" : [
+                {
+                    "Text": "Go to Star Wars: Galaxy's Edge",
+                    "Target": "SWGE",
+                    "Hidden": true
+                }, 
+                {
+                    "Text": "Go to Mickey's Toontown",
+                    "Target": "MickeysTT",
+                    "Hidden": true
+                }
+            ],
+            "Items": [
+                {
+                    "Name": "Rise of the Resistance FastPass",
+                    "Type": "FastPass",
+                    "Ride": "Star Wars: Rise of the Resistance",
+                    "Description": "Allows you to skip Rise of the Resistances line once",
+                    "Visible" : true
+                }
             ]
         },
+        "Exit": {
+            "Body": "You made it home, but got caught in traffic"
+        },
         "Home": {
-            "Body": "Home sweet home"
+            "Body": "Home sweet home, and you beat taffic"
         }
     }
 }
