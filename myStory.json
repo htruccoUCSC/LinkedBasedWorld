@@ -1,7 +1,9 @@
 {
     "Title": "Disneyland",
+    "SecondParkTitle": "California Adventure",
     "Credits": "Created by Adam Smith (amsmith@ucsc.edu) & Sonny Trucco.",
     "InitialLocation": "MainStreet",
+    "SecondParkInitialLocation": "BuenaVistaStreet",
     "InitialTime" : 540,
     "ClosingTime" : 1260,
     "ExitPath" : {
@@ -37,8 +39,10 @@
                 {
                     "Name": "Park Hopper Pass",
                     "Type": "HallPass",
+                    "PassUse": "SecondPark",
                     "Description": "Allows Access to California Adventure",
-                    "Visible" : false
+                    "Visible" : false,
+                    "Condition" : "MaxRides"
                 }
             ]
         },
@@ -47,8 +51,8 @@
             "Rides": [
                 {
                     "Text": "Ride Indiana Jones",
-                    "Time": 75,
-                    "Score": 4500
+                    "Time": 60,
+                    "Score": 3600
                 }, 
                 {
                     "Text": "Ride Jungle Cruise",
@@ -76,8 +80,8 @@
             "Rides": [
                 {
                     "Text": "Visit Tom Sawyer Island",
-                    "Time": 90,
-                    "Score": 5400
+                    "Time": 60,
+                    "Score": 3600
                 }, 
                 {
                     "Text": "Ride Big Thunder Mountain Railroad",
@@ -117,13 +121,13 @@
             "Rides": [
                 {
                     "Text": "Ride Pirates of the Caribbean",
-                    "Time": 60,
-                    "Score": 3600
+                    "Time": 45,
+                    "Score": 2700
                 }, 
                 {
                     "Text": "Ride Haunted Mansion",
-                    "Time": 45,
-                    "Score": 2700
+                    "Time": 30,
+                    "Score": 1800
                 }
             ],
             "Choices": [
@@ -146,8 +150,8 @@
             "Rides": [
                 {
                     "Text": "Ride Tiana's Bayou Adventure",
-                    "Time": 90,
-                    "Score": 5400
+                    "Time": 75,
+                    "Score": 4500
                 }, 
                 {
                     "Text": "Ride The Many Adventures of Winnie the Pooh",
@@ -171,9 +175,9 @@
             ],
             "Items": [
                 {
-                    "Name": "Staff Badge",
-                    "Type": "HallPass",
-                    "Description": "Allows access to shortcuts",
+                    "Name": "Club 33 Pass",
+                    "Type": "Toggle",
+                    "Description": "Allows you to purchase alcohol, causing poor navigation",
                     "Visible" : true
                 }
             ]
@@ -224,8 +228,8 @@
             "Rides": [
                 {
                     "Text": "Ride Matterhorn Bobsleds",
-                    "Time": 90,
-                    "Score": 5400
+                    "Time": 75,
+                    "Score": 4500
                 }, 
                 {
                     "Text": "Ride Peter Pan's Flight",
@@ -257,9 +261,10 @@
             ],
             "Items": [
                 {
-                    "Name": "Club 33 Pass",
-                    "Type": "Toggle",
-                    "Description": "Allows you to purchase alchohol, causing poor navigation",
+                    "Name": "Staff Badge",
+                    "Type": "HallPass",
+                    "PassUse": "Shortcuts",
+                    "Description": "Allows access to shortcuts",
                     "Visible" : true
                 }
             ]
@@ -269,8 +274,8 @@
             "Rides": [
                 {
                     "Text": "Ride Mickey and Minnie's Runaway Railway",
-                    "Time": 45,
-                    "Score": 2700
+                    "Time": 30,
+                    "Score": 1800
                 }
             ],
             "Choices": [
@@ -305,13 +310,13 @@
             "Rides": [
                 {
                     "Text": "Ride Space Mountain",
-                    "Time": 120,
-                    "Score": 7200
+                    "Time": 90,
+                    "Score": 5400
                 }, 
                 {
                     "Text": "Ride Star Tours - The Adventures Continue",
-                    "Time": 120,
-                    "Score": 7200
+                    "Time": 60,
+                    "Score": 3600
                 }
             ],
             "Choices": [
@@ -346,11 +351,281 @@
                 }
             ]
         },
+        "BuenaVistaStreet" : {
+            "Body": "Buena Vista Street, here you can ride the Red Car Trolley",
+            "Rides": [
+                {
+                    "Text": "Ride the Red Car Trolley",
+                    "Time": 30,
+                    "Score": 18000
+                }
+            ],
+            "Choices": [
+                {
+                    "Text": "Go to Hollywood Land",
+                    "Target": "HollywoodLand"
+                },
+                {
+                    "Text": "Go to Grizzly Peak",
+                    "Target": "GrizzlyPeak"
+                },
+                {
+                    "Text": "Go to Performance Corridor",
+                    "Target" : "PerformanceCorridor"
+                },
+                {
+                    "Text": "Go Home",
+                    "Target": "Home"
+                }
+            ]
+        },
+        "PerformanceCorridor" : {
+            "Body" : "Performance Corridor, the central hub of California Adventure",
+            "Choices": [
+                {
+                    "Text": "Go to Buena Vista Street",
+                    "Target": "BuenaVistaStreet"
+                },
+                {
+                    "Text": "Go to Grizzly Peak",
+                    "Target": "GrizzlyPeak"
+                },
+                {
+                    "Text": "Go to Avengers Campus",
+                    "Target": "AvengersCampus"
+                },
+                {
+                    "Text": "Go to Cars Land",
+                    "Target": "CarsLand"
+                },
+                {
+                    "Text": "Go to San Fransokyo Square",
+                    "Target": "SanFranksokyoSquare"
+                },
+                {
+                    "Text": "Go to Pixar Pier",
+                    "Target": "PixarPier"
+                },
+                {
+                    "Text": "Go to Paradise Gardens Park",
+                    "Target": "ParadiseGardensPark"
+                }
+            ] 
+        },
+        "HollywoodLand" : {
+            "Body" : "Hollywood Land, here you can ride Monsters, Inc. Mike & Sulley to the Rescue!",
+            "Rides" : [
+                {
+                    "Text": "Ride Monsters, Inc. Mike & Sulley to the Rescue!",
+                    "Time": 30,
+                    "Score": 18000
+                }
+            ],
+            "Choices": [
+                {
+                    "Text": "Go to Buena Vista Street",
+                    "Target": "BuenaVistaStreet"
+                },
+                {
+                    "Text": "Go to Avengers Campus",
+                    "Target": "AvengersCampus"
+                }
+            ]
+        },
+        "GrizzlyPeak" : {
+            "Body" : "Grizzly Peak, here you can ride Grizzly River Run & Soarin' Around the World",
+            "Rides" : [
+                {
+                    "Text": "Ride Grizzly River Run",
+                    "Time": 60,
+                    "Score": 36000
+                },
+                {
+                    "Text": "Ride Soarin' Around the World",
+                    "Time": 45,
+                    "Score": 27000
+                }
+            ],
+           "Choices": [
+                {
+                    "Text": "Go to Buena Vista Street",
+                    "Target": "BuenaVistaStreet"
+                },
+                {
+                    "Text": "Go to Performance Corridor",
+                    "Target": "PerformanceCorridor"
+                },
+                {
+                    "Text": "Go to Paradise Gardens Park",
+                    "Target": "ParadiseGardensPark"
+                }
+            ],
+            "Items": [
+                {
+                    "Name": "Radiator Springs Racers FastPass",
+                    "Type": "FastPass",
+                    "Ride": "Radiator Springs Racers",
+                    "Description": "Allows you to skip Radiator Springs Racers line once",
+                    "Visible" : true
+                }
+            ]
+        },
+        "AvengersCampus" : {
+            "Body" : "Avengers Campus, here you can ride Guardians of the Galaxy - Mission: BREAKOUT! & WEB SLINGERS: A Spider-Man Adventure",
+            "Rides" : [
+                {
+                    "Text": "Ride Guardians of the Galaxy - Mission: BREAKOUT!",
+                    "Time": 90,
+                    "Score": 63000
+                },
+                {
+                    "Text": "Ride WEB SLINGERS: A Spider-Man Adventure",
+                    "Time": 45,
+                    "Score": 27000
+                }
+            ],
+            "Choices": [
+                {
+                    "Text": "Go to Performance Corridor",
+                    "Target": "PerformanceCorridor"
+                },
+                {
+                    "Text": "Go to Hollywood Land",
+                    "Target": "HollywoodLand"
+                },
+                {
+                    "Text": "Go to Cars Land",
+                    "Target": "CarsLand"
+                }
+            ] 
+        },
+        "ParadiseGardensPark": {
+            "Body" : "Paradise Gardens Park, here you can ride Goofy's Sky School & The Little Mermaid - Ariel's Undersea Adventure",
+            "Rides" : [
+                {
+                    "Text": "Ride Goofy's Sky School",
+                    "Time": 45,
+                    "Score": 27000
+                },
+                {
+                    "Text": "Ride The Little Mermaid - Ariel's Undersea Adventure",
+                    "Time": 45,
+                    "Score": 27000
+                }
+            ],
+            "Choices": [
+                {
+                    "Text": "Go to Performance Corridor",
+                    "Target": "PerformanceCorridor"
+                },
+                {
+                    "Text": "Go to Grizzly Peak",
+                    "Target": "GrizzlyPeak"
+                },
+                {
+                    "Text": "Go to Pixar Pier",
+                    "Target": "PixarPier"
+                }
+            ] 
+        },
+        "CarsLand" : {
+            "Body" : "Cars Land, here you can ride Luigi's Rollickin' Roadsters & Radiator Springs Racers",
+            "Rides" : [
+                {
+                    "Text": "Ride Luigi's Rollickin' Roadsters",
+                    "Time": 30,
+                    "Score": 18000
+                },
+                {
+                    "Text": "Ride Radiator Springs Racers",
+                    "Time": 240,
+                    "Score": 144000
+                }
+            ],
+            "Choices": [
+                {
+                    "Text": "Go to Performance Corridor",
+                    "Target": "PerformanceCorridor"
+                },
+                {
+                    "Text": "Go to San Fransokyo Square",
+                    "Target": "SanFranksokyoSquare"
+                },
+                {
+                    "Text": "Go to Avengers Campus",
+                    "Target": "AvengersCampus"
+                }
+            ] 
+        },
+        "SanFranksokyoSquare" : {
+            "Body" : "San Franksokyo Square, here you can't ride anything",
+            "Choices": [
+                {
+                    "Text": "Go to Performance Corridor",
+                    "Target": "PerformanceCorridor"
+                },
+                {
+                    "Text": "Go to Cars Land",
+                    "Target": "CarsLand"
+                },
+                {
+                    "Text": "Go to Pixar Pier",
+                    "Target": "PixarPier"
+                }, 
+                {
+                    "Text": "Go to Paradise Gardens Park",
+                    "Target": "ParadiseGardensPark"
+                }
+            ] 
+        },
+        "PixarPier": {
+            "Body" : "Pixar Pier, here you can ride the Incredicoaster & Toy Story Midway Mania!",
+            "Rides" : [
+                {
+                    "Text": "Ride the Incredicoaster",
+                    "Time": 90,
+                    "Score": 27000
+                },
+                {
+                    "Text": "Ride Toy Story Midway Mania!",
+                    "Time": 60,
+                    "Score": 36000
+                }
+            ],
+            "Choices": [
+                {
+                    "Text": "Go to Performance Corridor",
+                    "Target": "PerformanceCorridor"
+                },
+                {
+                    "Text": "Go to San Fransokyo Square",
+                    "Target": "SanFranksokyoSquare"
+                },
+                {
+                    "Text": "Go to Paradise Gardens Park",
+                    "Target": "ParadiseGardensPark"
+                }
+            ]
+        },
         "Exit": {
-            "Body": "You made it home, but got caught in traffic"
+            "Body": "You made it home, but got caught in traffic",
+            "HiddenChoices" : [
+                {
+                    "Text": "Go to California Adventure Tomorrow",
+                    "Target": "BuenaVistaStreet",
+                    "Hidden": true
+                }
+            ]
         },
         "Home": {
-            "Body": "Home sweet home, and you beat taffic"
+            "Body": "Home sweet home, and you beat traffic",
+            "HiddenChoices" : [
+                {
+                    "Text": "Go to California Adventure Tomorrow",
+                    "Target": "BuenaVistaStreet",
+                    "Hidden": true
+                }
+            ]
         }
     }
 }

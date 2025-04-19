@@ -5,6 +5,9 @@ let playerItems = [];
 let collectedItems = new Set();
 let carousel = false;
 let shortcuts = false;
+let parkHopper = false;
+let ridesRidden = new Set();
+let newDay = false;
 class Start extends Scene {
     create () {
         this.engine.setTitle(this.engine.storyData.Title); // TODO: replace this text using this.engine.storyData to find the story title
@@ -26,20 +29,31 @@ class Location extends Scene {
         this.key = key;
         let locationData = this.engine.storyData.Locations[key]; // TODO: use `key` to get the data object for the current story location
         this.engine.show(locationData.Body); // TODO: replace this text by the Body of the location data
-        if (locationData.Rides && locationData.Rides.length > 0) {
+        if (key == this.engine.storyData.SecondParkInitialLocation && newDay == false) {
+            this.engine.setClock(this.engine.storyData.InitialTime);
+            time = this.engine.storyData.InitialTime;
+            this.engine.setTitle(this.engine.storyData.SecondParkTitle);
+            closingTime = this.engine.storyData.ClosingTime;
+            newDay = true;
+        }
+        if (locationData.Rides && locationData.Rides.length) {
             for (let ride of locationData.Rides) {
                 this.engine.addRide(ride);
             }
         }
-        if(locationData.Choices && locationData.Choices.length > 0) { // TODO: check if the location has any Choices
+        if(locationData.Choices && locationData.Choices.length) { // TODO: check if the location has any Choices
             for(let choice of locationData.Choices) { // TODO: loop over the location's Choices
                 this.engine.addChoice(choice.Text, choice); // TODO: use the Text of the choice
             }
-            if (shortcuts && locationData.HiddenChoices && locationData.HiddenChoices.length > 0) {
+            if (shortcuts && locationData.HiddenChoices && locationData.HiddenChoices.length) {
                 for(let hiddenChoice of locationData.HiddenChoices) { // TODO: loop over the location's Choices
                     this.engine.addChoice(hiddenChoice.Text, hiddenChoice); // TODO: use the Text of the choice
                 }
             } 
+        } else if (locationData.HiddenChoices && locationData.HiddenChoices.length && parkHopper && newDay == false) { 
+            for(let hiddenChoice of locationData.HiddenChoices) { 
+                this.engine.addChoice(hiddenChoice.Text, hiddenChoice); 
+            }
         } else {
             this.engine.addChoice("The end.");
         }
@@ -57,7 +71,7 @@ class Location extends Scene {
     }
 
     handleRide (ride) {
-        if (ride ){
+        if (ride){
             let x = 0;
             // Lock and Key puzzle where the fast pass essentially makes Star Wars viable
             let fpi = playerItems.findIndex(item => item instanceof FastPass && ride.Text.includes(item.ride));
@@ -71,13 +85,20 @@ class Location extends Scene {
             if (x) {
                 this.engine.show("&gt; " + (ride.Text.includes("Ride") ? "Rode" + ride.Text.replace("Ride", "") : "Visited" + ride.Text.replace("Visit", "")));
                 score += ride.Score;
+                if (!ridesRidden.has(ride)) {
+                    ridesRidden.add(ride);
+                }
                 this.engine.setScore(score);
             }
-            if (x != 1) {
-                this.engine.show(time >= 1440 ? "&gt; Parks closing, time to head home": "&gt; You got tired in line and decided to head home");
+            if (x == 0) {
+                this.engine.show(time >= 1440 ? "&gt; The Park closing, time to head home": "&gt; You got tired in line and decided to head home");
                 this.engine.clearActions();
                 this.engine.addChoice(this.engine.storyData.ExitPath.Text, this.engine.storyData.ExitPath);
-            } 
+            } else if (x == 2) {
+                this.engine.show(time >= 1440 ? "&gt; The Park closing, time to head home": "&gt; Time to head home");
+                this.engine.clearActions();
+                this.engine.addChoice(this.engine.storyData.ExitPath.Text, this.engine.storyData.ExitPath);
+            }
         }
     }
 
@@ -91,14 +112,17 @@ class Location extends Scene {
                 madeChoice = choice;
             }
             this.engine.show("&gt; "+madeChoice.Text);
-            this.engine.gotoScene(this.engine.storyData.Locations[madeChoice.Target] ? ItemLocation : Location, madeChoice.Target);
-            if (this.handleTime(15) != 1 && madeChoice != this.engine.storyData.ExitPath && madeChoice.Target != "Home") {
-                this.engine.show("&gt; Time to head home");
+            if (this.handleTime(15) != 1 && madeChoice != this.engine.storyData.ExitPath && madeChoice.Target != "Home" && madeChoice.Target != this.engine.storyData.SecondParkInitialLocation) {
+                this.engine.gotoScene(this.engine.storyData.Locations[madeChoice.Target] ? ItemLocation : Location, madeChoice.Target);
                 this.engine.clearActions();
                 this.engine.addChoice(this.engine.storyData.ExitPath.Text, this.engine.storyData.ExitPath);
+                this.engine.show("&gt; Time to head home");
             } else if (madeChoice.Target == "Home") {
                 score += 5000;
                 this.engine.setScore(score);
+                this.engine.gotoScene(this.engine.storyData.Locations[madeChoice.Target] ? ItemLocation : Location, madeChoice.Target);
+            } else {
+                this.engine.gotoScene(this.engine.storyData.Locations[madeChoice.Target] ? ItemLocation : Location, madeChoice.Target);
             }
         } else {
             this.engine.gotoScene(End);
@@ -130,7 +154,7 @@ class Consumable extends GameWorldItem {
     }
 }
 
-//Togglable Carousel mode
+//Toggleable Carousel mode
 class Toggle extends GameWorldItem {
     constructor (item) {
         super(item);
@@ -138,11 +162,21 @@ class Toggle extends GameWorldItem {
     }
 }
 
-//Flashlight mechanic allowing the player to access new paths
+//Flashlight / Lamp mechanic allowing the player to access new paths
 class HallPass extends GameWorldItem {
     constructor (item) {
         super(item);
-        shortcuts = true;
+        switch (item.PassUse) {
+            case "Shortcuts":
+                shortcuts = true;
+                break;
+            // Babelfish Puzzle: Riding every ride gives you access to visiting California Adventure the next day
+            case "SecondPark":
+                parkHopper = true;
+                break;
+            default:
+        }
+        
     }
 }
 
@@ -150,11 +184,21 @@ class ItemLocation extends Location {
     create (key) {
         super.create(key);
         let locationData = this.engine.storyData.Locations[key];
-        if (locationData.Items && locationData.Items.length > 0) {
+        if (locationData.Items && locationData.Items.length) {
             for (let item of locationData.Items) {
                 if (item.Visible && !collectedItems.has(item)) {
                     this.engine.addItem(item);
-                }
+                } else if (item.Condition && item.Visible == false) {
+                    //got lazy here
+                    switch (item.Condition){
+                        case "MaxRides":
+                            if (ridesRidden.size >= 15) {
+                                this.engine.addItem(item);
+                            }
+                            break;
+                        default:
+                    }
+                } 
             }
         }
     }

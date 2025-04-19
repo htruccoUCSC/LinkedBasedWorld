@@ -24,17 +24,17 @@ class Engine {
         this.actionsContainer = document.body.appendChild(document.createElement("div"));
         this.actionsContainer.classList.add("actions-container");
 
-        this.itemsContainer = document.createElement("div");
-        this.itemsContainer.classList.add("items-container");
-        this.actionsContainer.appendChild(this.itemsContainer);
+        this.choicesContainer = document.createElement("div");
+        this.choicesContainer.classList.add("choices-container");
+        this.actionsContainer.appendChild(this.choicesContainer);
 
         this.ridesContainer = document.createElement("div");
         this.ridesContainer.classList.add("rides-container");
         this.actionsContainer.appendChild(this.ridesContainer);
 
-        this.choicesContainer = document.createElement("div");
-        this.choicesContainer.classList.add("choices-container");
-        this.actionsContainer.appendChild(this.choicesContainer);
+        this.itemsContainer = document.createElement("div");
+        this.itemsContainer.classList.add("items-container");
+        this.actionsContainer.appendChild(this.itemsContainer);
 
         fetch(storyDataUrl).then(
             (response) => response.json()
@@ -93,7 +93,6 @@ class Engine {
         const button = document.createElement("button");
         button.innerText = action;
         if (data && data.Hidden) {
-            console.log(data);
             button.classList.add("hidden-label");
         }
         this.choicesContainer.appendChild(button)
@@ -142,7 +141,8 @@ class Engine {
     show(msg) {
         let div = document.createElement("div");
         div.innerHTML = msg;
-        this.output.appendChild(div);
+        this.output.prepend(div);
+        this.output.prepend(div);
     }
 }
 

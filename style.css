@@ -38,11 +38,22 @@
   padding: 1rem;
   margin-bottom: 1rem;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  height: 400px;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  display: flex;
+  flex-direction: column-reverse;
+  }
+
+  .output > div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
   }
   
   .actions-container {
   display: flex;
-  flex-direction: column; 
+  flex-direction: column-reverse;
   gap: 1rem;
   }
   
@@ -88,6 +99,7 @@
   color: #ffffff;
   cursor: pointer;
   font-size: 1rem;
+  transition: background-color 0.2s ease;
   }
   
   .actions-container button:hover {
@@ -95,9 +107,14 @@
   }
 
   .hidden-label {
-    background: #d32f2f !important;
-    color: #ffffff !important;
+  background: #d32f2f !important;
+  color: #ffffff !important;
   }
+
+  .hidden-label:hover {
+  background: #6e1919 !important;
+  }
+
   hr {
   margin: 1rem 0;
   border: none;
